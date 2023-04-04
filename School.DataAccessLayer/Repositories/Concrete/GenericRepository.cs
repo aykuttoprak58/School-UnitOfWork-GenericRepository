@@ -15,18 +15,19 @@ namespace School.DataAccessLayer.Repositories.Concrete
         public GenericRepository(SchoolDbContext contex2)
         {
             context = contex2;
-            dbSet = context.Set<T>();    
-
+            dbSet = context.Set<T>();
         }
 
         public void Add(T entity)
         {
             dbSet.Add(entity);
+     
         }
 
         public void AddRange(IEnumerable<T> entities)
         {
             dbSet.AddRange(entities);
+  
         }
 
         public IEnumerable<T> GetAll()

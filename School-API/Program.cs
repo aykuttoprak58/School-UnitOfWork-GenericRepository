@@ -1,3 +1,4 @@
+using School.BusinessLayer.Concrete;
 using School.DataAccessLayer;
 using School.DataAccessLayer.Repositories.Concrete;
 
@@ -8,6 +9,7 @@ builder.Services.AddScoped<SchoolDbContext>();
 builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddScoped<LessonRepository>();
 builder.Services.AddScoped<TeacherRepository>();
+builder.Services.AddScoped<LessonBusiness>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

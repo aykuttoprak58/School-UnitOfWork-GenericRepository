@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using School.BusinessLayer.Abstract;
+using School.BusinessLayer.Concrete;
 using School.DataAccessLayer.Repositories.Concrete;
 using School.Entities;
 
@@ -9,12 +11,13 @@ namespace School_API.Controllers
     [ApiController]
     public class TeacherController : ControllerBase
     {
-        public TeacherRepository teacherRepo;
+        public TeacherBusiness teacherBusiness;
         public UnitOfWork UOW;
-        public TeacherController(TeacherRepository teacherRepository2, UnitOfWork unitOfWork2)
+        public TeacherController(UnitOfWork unitOfWork2, TeacherBusiness teacherBusiness2)
         {
-            teacherRepo = teacherRepository2;
+
             UOW = unitOfWork2;
+            teacherBusiness = teacherBusiness2;
         }
 
         [HttpGet]
@@ -22,7 +25,7 @@ namespace School_API.Controllers
         public IActionResult GetAll()
         {
 
-            var result = teacherRepo.GetAll();
+            var result = teacherBusiness.GetAll();
 
             return Ok(result);
 
@@ -33,7 +36,7 @@ namespace School_API.Controllers
         public IActionResult GetById(int id)
         {
 
-            var result = teacherRepo.GetById(id);
+            var result = teacherBusiness.GetById(id);
 
             return Ok(result);
 
@@ -46,7 +49,7 @@ namespace School_API.Controllers
         public IActionResult Add(Teachers entity)
         {
 
-            teacherRepo.Add(entity);
+            teacherBusiness.Add(entity);
             UOW.Complete();
 
             return Ok("kayıt eklendi");
@@ -57,7 +60,7 @@ namespace School_API.Controllers
         public IActionResult AddRange(IEnumerable<Teachers> entities)
         {
 
-            teacherRepo.AddRange(entities);
+            teacherBusiness.AddRange(entities);
             UOW.Complete();
             return Ok("toplu kayıt başarılı");
 
@@ -68,7 +71,7 @@ namespace School_API.Controllers
         [Route("E")]
         public IActionResult Delete(int id)
         {
-            teacherRepo.Remove(id);
+            teacherBusiness.Remove(id);
             UOW.Complete();
             return Ok("Kayıt Silindi");
         }
@@ -80,7 +83,7 @@ namespace School_API.Controllers
         public IActionResult RemoveRange(IEnumerable<Teachers> entities)
         {
 
-            teacherRepo.RemoveRange(entities);
+            teacherBusiness.RemoveRange(entities);
             UOW.Complete();
             return Ok("toplu kayıt silindi");
 
@@ -90,7 +93,7 @@ namespace School_API.Controllers
         [Route("G")]
         public IActionResult Update(Teachers entity)
         {
-            teacherRepo.Update(entity);
+            teacherBusiness.Update(entity);
             UOW.Complete();
             return Ok("kayıt güncellendi");
 
@@ -100,7 +103,7 @@ namespace School_API.Controllers
         [Route("H")]
         public IActionResult UpdateRange(IEnumerable<Teachers> entities)
         {
-            teacherRepo.UpdateRange(entities);
+            teacherBusiness.UpdateRange(entities);
             UOW.Complete();
             return Ok("Toplu Kayıt Güncellendi");
 
@@ -112,7 +115,7 @@ namespace School_API.Controllers
         [Route("I")]
         public IActionResult GetTopDepartmentS(int count)
         {
-            var results = teacherRepo.GetTopDepartments(count);
+            var results = teacherBusiness.GetTopDepartments(count);
 
             return Ok(results);
 

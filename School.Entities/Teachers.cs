@@ -23,6 +23,6 @@ namespace School.Entities
         [ForeignKey("Lessons")]
         public int LessonId { get; set; }
 
-        private Lessons Lessons { get; set; }        
+        public Lessons Lessons { get; set; }        
     }
 }
