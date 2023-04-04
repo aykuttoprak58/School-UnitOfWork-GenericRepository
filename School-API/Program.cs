@@ -10,6 +10,7 @@ builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddScoped<LessonRepository>();
 builder.Services.AddScoped<TeacherRepository>();
 builder.Services.AddScoped<LessonBusiness>();
+builder.Services.AddScoped<TeacherBusiness>();  
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

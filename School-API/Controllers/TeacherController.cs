@@ -113,9 +113,19 @@ namespace School_API.Controllers
 
         [HttpGet]
         [Route("I")]
-        public IActionResult GetTopDepartmentS(int count)
+        public IActionResult GetTopDepartments(int count)
         {
             var results = teacherBusiness.GetTopDepartments(count);
+
+            return Ok(results);
+
+        }
+
+        [HttpGet]
+        [Route("K")]
+        public IActionResult GetTeachersWithLessons()
+        {
+            var results = teacherBusiness.GetTeachersWithLessons();
 
             return Ok(results);
 
