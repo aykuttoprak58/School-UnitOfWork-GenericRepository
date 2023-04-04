@@ -11,6 +11,6 @@ namespace School.DataAccessLayer.Repositories.Abstract
     {
         IEnumerable<Teachers> GetTopDepartments(int count);
 
-        IEnumerable<Teachers> GetTeachersWithLessons();
+   
     }
 }

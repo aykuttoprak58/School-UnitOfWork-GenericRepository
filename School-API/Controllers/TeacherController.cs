@@ -121,16 +121,6 @@ namespace School_API.Controllers
 
         }
 
-        [HttpGet]
-        [Route("K")]
-        public IActionResult GetTeachersWithLessons()
-        {
-            var results = teacherBusiness.GetTeachersWithLessons();
-
-            return Ok(results);
-
-        }
-
 
     }
 }

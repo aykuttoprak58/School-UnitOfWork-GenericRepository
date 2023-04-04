@@ -15,11 +15,6 @@ namespace School.DataAccessLayer.Repositories.Concrete
         {
         }
 
-        public IEnumerable<Teachers> GetTeachersWithLessons()
-        {
-            return SchoolDbContext.Teachers.Include(t => t.Lessons).ToList();
-        }
-
         public IEnumerable<Teachers> GetTopDepartments(int count)
         {
             return SchoolDbContext.Teachers.Take(count);
