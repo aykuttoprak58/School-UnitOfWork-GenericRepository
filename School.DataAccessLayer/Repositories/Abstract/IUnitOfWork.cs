@@ -10,6 +10,8 @@ namespace School.DataAccessLayer.Repositories.Abstract
     {
         ILessonRepository LessonRepository { get; }
 
+        ITeacherRepository teacherRepository { get;}
+
         int Complete();
     }
 }
